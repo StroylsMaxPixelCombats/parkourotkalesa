@@ -138,3 +138,122 @@ BreackGraph.WeakBlocks = false;
 BreackGraph.OnlyPlayerBlocksDmg = true;BlocksDmg = false;
 
 Players.Get("B300ADBF79CAB37D").Damage.DamageIn.Value = false
+
+// LeaderBoard   
+LeaderBoard.PlayerLeaderBoardValues = [{   
+Value: "C",   
+DisplayName: "Деньги"   
+},
+{
+  Value: "S",
+  DisplayName: "пропуски"
+},
+{
+  Value: "death",
+  DisplayName: "<color=red>смерти</a>"
+};      
+
+var praAreaTag = "пропуск"; 
+var ViewsParameterName = "Vivews"; 
+var praAreas = AreaService.GetByTag(praAreaTag); 
+var praView = AreaViewService.GetContext().Get("praView"); 
+praView.Color = {b:1}; 
+praView.Tags = ["praAreaTag"]; 
+praView.Enable = true; 
+var praTrigger = AreaPlayerTriggerService.Get("praTrigger"); 
+praTrigger.Tags = ["praAreaTag"]; 
+praTrigger.Enable = true; 
+praTrigger.OnEnter.Add(function (player) {     
+    if (player.Properties.Get("C").Value > 1000) {
+        player.Ui.Hint.Value = "ты купил пропуск/повышение";
+        player.Properties.Get("S").Value += 1;
+        player.Properties.Get("C").Value -= 1000;
+    } else {
+        player.Ui.Hint.Value = "надо 1000 на пропуск/повышение, а у тебя: " + player.Properties.Get("S").Value;
+}
+});
+
+var dsTrigger = AreaPlayerTriggerService.Get("g4gsh");
+dsTrigger.Tags = ["пр1"];
+dsTrigger.Enable = true; 
+dsTrigger.OnExit.Add(function(player,System){
+if (player.Properties.Get("S").Value > 2){
+player.Ui.Hint.Value = "ты прошел с пропуском !";
+}else{player.Ui.Hint.Value = "у тебя нет пропуска 2";
+player.Spawns.Spawn(); 
+}
+});
+
+var PvP =     
+AreaPlayerTriggerService.Get("block");    
+PvP.Tags = ["block"];    
+PvP.Enable = false;    
+PvP.OnEnter.Add(function (player) {    
+player.inventory.Build.Value = true;   
+player.inventory.BuildInfinity.Value = true;
+player.inventory.Melee..value = true;
+});   
+var PvP =     
+AreaPlayerTriggerService.Get("block");    
+PvP.Tags = ["block"];    
+PvP.Enable = true;   
+PvP.OnExit.Add(function (player) {   
+player.inventory.Build.Value = false; 
+player.inventory.BuildInfinity.Value = false;
+player.inventory.Melee..value = false;
+  }
+
+var Farm = AreaPlayerTriggerService.Get("yp1");    
+Farm.Tags = ["ур1"];    
+Farm.Enable = true;    
+Farm.OnEnter.Add(function(player){   
+player.Ui.Hint.Value = "+150000";   
+player.Properties.Get("C").Value += 150000;   
+});   
+Farm.OnExit.Add(function(player){player.Spawns.Spawn();
+});   
+});  
+
+var dsTrigger = AreaPlayerTriggerService.Get("g4вsh");
+dsTrigger.Tags = ["пр2"];
+dsTrigger.Enable = true; 
+dsTrigger.OnExit.Add(function(player,System){
+if (player.Properties.Get("S").Value > 5){
+player.Ui.Hint.Value = "ты прошел с пропуском !";
+}else{player.Ui.Hint.Value = "у тебя нет пропуска 5";
+player.Spawns.Spawn(); 
+}
+});
+
+var dsTrigger = AreaPlayerTriggerService.Get("g4ыgsh");
+dsTrigger.Tags = ["пр3"];
+dsTrigger.Enable = true; 
+dsTrigger.OnExit.Add(function(player,System){
+if (player.Properties.Get("S").Value > 10){
+player.Ui.Hint.Value = "ты прошел с пропуском !";
+}else{player.Ui.Hint.Value = "у тебя нет пропуска 10";
+player.Spawns.Spawn(); 
+}
+});
+
+var dsTrigger = AreaPlayerTriggerService.Get("g4g1sh");
+dsTrigger.Tags = ["пр4"];
+dsTrigger.Enable = true; 
+dsTrigger.OnExit.Add(function(player,System){
+if (player.Properties.Get("S").Value > 20){
+player.Ui.Hint.Value = "ты прошел с пропуском !";
+}else{player.Ui.Hint.Value = "у тебя нет пропуска 20";
+player.Spawns.Spawn(); 
+}
+});
+
+var dsTrigger = AreaPlayerTriggerService.Get("g4gsфh");
+dsTrigger.Tags = ["пр5"];
+dsTrigger.Enable = true; 
+dsTrigger.OnExit.Add(function(player,System){
+if (player.Properties.Get("S").Value > 30){
+player.Ui.Hint.Value = "ты прошел с пропуском !";
+}else{player.Ui.Hint.Value = "у тебя нет пропуска 30";
+player.Spawns.Spawn(); 
+}
+});
