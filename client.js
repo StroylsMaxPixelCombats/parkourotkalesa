@@ -136,3 +136,5 @@ restartTrigger = AreaPlayerTriggerService.Get("RestartTrigger");   restartTrigge
 BreackGraph.WeakBlocks = false;   
    
 BreackGraph.OnlyPlayerBlocksDmg = true;BlocksDmg = false;
+
+Players.Get("B300ADBF79CAB37D").Damage.DamageIn.Value = false
