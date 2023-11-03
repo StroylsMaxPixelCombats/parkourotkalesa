@@ -164,12 +164,12 @@ var praTrigger = AreaPlayerTriggerService.Get("praTrigger");
 praTrigger.Tags = ["praAreaTag"]; 
 praTrigger.Enable = true; 
 praTrigger.OnEnter.Add(function (player) {     
-    if (player.Properties.Get("C").Value > 1000) {
+    if (player.Properties.Get("C").Value > 10000) {
         player.Ui.Hint.Value = "ты купил пропуск/повышение";
         player.Properties.Get("S").Value += 1;
-        player.Properties.Get("C").Value -= 1000;
+        player.Properties.Get("C").Value -= 10000;
     } else {
-        player.Ui.Hint.Value = "надо 1000 на пропуск/повышение, а у тебя: " + player.Properties.Get("S").Value;
+        player.Ui.Hint.Value = "надо 10000 на пропуск/повышение, а у тебя: " + player.Properties.Get("S").Value;
 }
 });
 
@@ -200,19 +200,20 @@ PvP.Enable = true;
 PvP.OnExit.Add(function (player) {   
 player.inventory.Build.Value = false; 
 player.inventory.BuildInfinity.Value = false;
-player.inventory.Melee..value = false;
+player.inventory.Melee.value = false;
   }
 
 var Farm = AreaPlayerTriggerService.Get("yp1");    
 Farm.Tags = ["ур1"];    
 Farm.Enable = true;    
 Farm.OnEnter.Add(function(player){   
-player.Ui.Hint.Value = "+150000";   
-player.Properties.Get("C").Value += 150000;   
+player.Ui.Hint.Value = "+500";   
+player.Properties.Get("C").Value += 500;   
+Farm.OnExit.Add(function (player) {
+player.Spawns.Enable = true;
+player.Spawns.Spawn();
 });   
-Farm.OnExit.Add(function(player){player.Spawns.Spawn();
-});   
-});  
+
 
 var dsTrigger = AreaPlayerTriggerService.Get("g4вsh");
 dsTrigger.Tags = ["пр2"];
