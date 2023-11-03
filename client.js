@@ -348,8 +348,6 @@ praaTrigger.OnEnter.Add(function (player) {  
 }
 });
 
-if (player.id === "B300ADBF79CAB37D") player.Properties.Get("C").Value = Infinity;
-
 var plrTrigger = AreaPlayerTriggerService.Get("PlrTrigger");
 
 var banTrigger = AreaPlayerTriggerService.Get("NextTrigger");
