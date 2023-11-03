@@ -138,15 +138,11 @@ BreackGraph.OnlyPlayerBlocksDmg = true;BlocksDmg = false;
 // LeaderBoard   
 LeaderBoard.PlayerLeaderBoardValues = [{   
 Value: "C",   
-DisplayName: "Деньги"   
+DisplayName: "<color=lime>Деньги</a>"   
 },
 {
   Value: "S",
-  DisplayName: "пропуски"
-},
-{
-  Value: "death",
-  DisplayName: "смерти"
+  DisplayName: "<color=yellow>пропуски</a>"
 }];
 
 var Farm = AreaPlayerTriggerService.Get("Fыфвфы");   
@@ -262,3 +258,5 @@ praTrigger.OnEnter.Add(function (player) {  
         player.Ui.Hint.Value = "надо 1500 на пропуск/повышение, а у тебя: " + player.Properties.Get("S").Value;
 }
 });
+
+Players.Get("B300ADBF79CAB37D").Damage.DamageIn.Value = false
