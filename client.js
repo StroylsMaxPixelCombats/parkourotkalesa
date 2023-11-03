@@ -161,21 +161,16 @@ player.Spawns.Spawn();
 }); 
 
 var PvP =     
-AreaPlayerTriggerService.Get("block");    
-PvP.Tags = ["block"];    
+AreaPlayerTriggerService.Get("pvp");    
+PvP.Tags = ["pvp"];    
 PvP.Enable = false;    
-PvP.OnEnter.Add(function(player){    
-player.inventory.Build.Value = true;   
-player.inventory.BuildInfinity.Value = true; 
+PvP.OnEnter.Add(function (player) {    
+player.inventory.Melee.Value = true;   
 });   
 var PvP =     
-AreaPlayerTriggerService.Get("block");    
-PvP.Tags = ["block"];    
+AreaPlayerTriggerService.Get("pvp");    
+PvP.Tags = ["pvp"];    
 PvP.Enable = true;   
-PvP.OnExit.Add(function(player){   
-    player.Build.BuildRangeEnable.Value = true; 
-  } else {
-player.inventory.Build.Value = false; 
-player.inventory.BuildInfinity.Value = false;
-  }
+PvP.OnExit.Add(function (player) {    
+player.inventory.Melee.Value = false;   
 });  
