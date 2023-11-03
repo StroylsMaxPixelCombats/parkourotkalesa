@@ -147,31 +147,7 @@ DisplayName: "Деньги"
 {
   Value: "S",
   DisplayName: "пропуски"
-},
-{
-  Value: "death",
-  DisplayName: "смерти"
-};      
-
-var praAreaTag = "пропуск"; 
-var ViewsParameterName = "Vivews"; 
-var praAreas = AreaService.GetByTag(praAreaTag); 
-var praView = AreaViewService.GetContext().Get("praView"); 
-praView.Color = {b:1}; 
-praView.Tags = ["praAreaTag"]; 
-praView.Enable = true; 
-var praTrigger = AreaPlayerTriggerService.Get("praTrigger"); 
-praTrigger.Tags = ["praAreaTag"]; 
-praTrigger.Enable = true; 
-praTrigger.OnEnter.Add(function (player) {     
-      if (player.Properties.Get("C").Value > 10000) {
-        player.Ui.Hint.Value = "ты купил пропуск/повышение";
-        player.Properties.Get("S").Value += 1;
-        player.Properties.Get("C").Value -= 10000;
-      } else {
-         player.Ui.Hint.Value = "надо 10000 на пропуск/повышение, а у тебя: " + player.Properties.Get("S").Value;
-}
-});
+};  
 
 var dsTrigger = AreaPlayerTriggerService.Get("g4gsh");
 dsTrigger.Tags = ["пр1"];
