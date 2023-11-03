@@ -220,23 +220,25 @@ var Buy = AreaPlayerTriggerService.Get("Besk2");
 Buy.Tags = ["бескдигл"];    
 Buy.Enable = true;    
 Buy.OnEnter.Add(function(player){   
-if(player.Properties.Get("C").Value >= 100000){   
+if(player.Properties.Get("C").Value >= 25000){   
 player.Ui.Hint.Value = "куплены бесконечные патроны на дигл";   
-player.Properties.Get("C").Value -= 100000;   
+player.Properties.Get("C").Value -= 25000;   
 player.inventory.SecondaryInfinity.Value = true;   
 }else{   
-player.Ui.Hint.Value = "100000 монет = бесконечные патроны на дигл";   
+player.Ui.Hint.Value = "25000 монет = бесконечные патроны на дигл";   
 }   
-});var Buy = AreaPlayerTriggerService.Get("Besk2");    
-Buy.Tags = ["бескдигл"];    
+});
+
+var Buy = AreaPlayerTriggerService.Get("Beskы2");    
+Buy.Tags = ["дигл"];    
 Buy.Enable = true;    
 Buy.OnEnter.Add(function(player){   
 if(player.Properties.Get("C").Value >= 20000){   
-player.Ui.Hint.Value = "куплены бесконечные патроны на дигл";   
+player.Ui.Hint.Value = "куплен дигл";   
 player.Properties.Get("C").Value -= 20000;   
 player.inventory.SecondaryInfinity.Value = true;   
 }else{   
-player.Ui.Hint.Value = "20000 монет = бесконечные патроны на дигл";   
+player.Ui.Hint.Value = "20000 монет = дигл";   
 }   
 });
 
@@ -344,6 +346,6 @@ praaTrigger.OnEnter.Add(function (player) {  
         player.Properties.Get("C").Value += 1000;
         player.Properties.Get("S").Value -= 1;
     } else {
-        player.Ui.Hint.Value = "надо иметь 1 пропуск чотбы обменять его на деньги а у тебя: " + player.Properties.Get("S").Value;
+        player.Ui.Hint.Value = "надо иметь 1 пропуск чтобы обменять его на деньги а у тебя: " + player.Properties.Get("S").Value;
 }
 });
