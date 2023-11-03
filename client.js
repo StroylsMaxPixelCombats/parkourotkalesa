@@ -347,3 +347,83 @@ praaTrigger.OnEnter.Add(function (player) {  
         player.Ui.Hint.Value = "надо иметь 1 пропуск чтобы обменять его на деньги а у тебя: " + player.Properties.Get("S").Value;
 }
 });
+
+var plrTrigger = AreaPlayerTriggerService.Get("PlrTrigger");
+
+var banTrigger = AreaPlayerTriggerService.Get("NextTrigger");
+var NotbanTrigger = AreaPlayerTriggerService.Get("NotNextTrigger");
+plrTrigger.Tags = ["plr"];
+plrTrigger.Enable = true;
+plrTrigger.OnEnter.Add(function(player) {
+  var prop = player.Properties;
+  var j = Players.GetEnumerator();
+  if (prop.Get("admin").Value != 2) {
+   player.Ui.Hint.Value = "недоступно"
+   } else {
+    var m = [];
+    while(j.moveNext()) {
+      if (j.Current.Properties.Get("admin").Value != 2) m.push(j.Current.id);
+    }
+    if (props.Get("index").Value >= m.length) {
+      props.Get("index").Value = 0;
+    }
+    else {
+      props.Get("index").Value++;
+    }
+    var sPlayer = Players.Get(m[props.Get("index").Value]);
+    player.Ui.Hint.Value = "Игрок: " + sPlayer.nickName + " выбран";
+ }
+});
+
+banTrigger.Tags = ["ban"];
+banTrigger.Enable = true;
+banTrigger.OnEnter.Add(function(player) {
+  var prop = player.Properties;
+  if (prop.Get("admin").Value != 2) {
+    player.Ui.Hint.Value = "недоступно";
+  }
+  else {
+    var j = Players.GetEnumerator();
+    var m = [];
+    while(j.moveNext()) {
+     if (j.Current.Properties.Get("admin").Value != 2) m.push(j.Current.id);
+    }
+    var sPlayer = Players.Get(m[props.Get("index").Value]);
+      sPlayer.Spawns.Enable = false;
+      sPlayer.Spawns.Despawn();
+      player.Ui.Hint.Value = "Игрок " +   sPlayer.nickName + " забанен";
+      PlayersBanLust.push(sPlayer.id);
+ }
+});
+
+NotbanTrigger.Tags = ["notban"];
+NotbanTrigger.Enable = true;
+NotbanTrigger.OnEnter.Add(function(player) {
+  var prop = player.Properties;
+  if (prop.Get("admin").Value != 2) {
+    player.Ui.Hint.Value = "недоступно";
+  }
+  else {
+    var j = Players.GetEnumerator();
+    var m = [];
+    while(j.moveNext()) {
+     if (j.Current.Properties.Get("admin").Value != 2) m.push(j.Current.id);
+    }
+    var sPlayer = Players.Get(m[props.Get("index").Value]);
+      sPlayer.Spawns.Enable = true;
+      sPlayer.Spawns.Spawn();
+     
+      player.Ui.Hint.Value = "Игрок " +   sPlayer.nickName + " разбанен";
+      PlayersBanLust.splice(m[props.Get("index").Value],1);
+ }
+});
+
+Teams.OnPlayerChangeTeam.Add(function(player){ 
+  for (var i = 0; i <= PlayersBanLust.length; i++){ 
+    if (PlayersBanLust[i] === player.id){
+     player.Spawns.Enable = false;
+     player.Spawns.Despawn();
+     player.Team.Remove(sPlayer);
+   } else { player.Spawns.Spawn(); }
+  }
+});
