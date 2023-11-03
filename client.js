@@ -101,8 +101,6 @@ player.inventory.ExplosiveInfinity.Value = false;
 });   
  }   
 });                                                                                                  
-// ����� �� ����� � �������   
-Teams.OnPlayerChangeTeam.Add(function(player){player.Spawns.Spawn()});
    
 //    
 var des = "<size=100>k<color=#00FFF8>a</color>l<color=#FFA600>e</color><color=#00FF25>s</color>a<color=#FF0000>V</color></size>";    
