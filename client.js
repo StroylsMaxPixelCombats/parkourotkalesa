@@ -164,12 +164,12 @@ var praTrigger = AreaPlayerTriggerService.Get("praTrigger");
 praTrigger.Tags = ["praAreaTag"]; 
 praTrigger.Enable = true; 
 praTrigger.OnEnter.Add(function (player) {     
-    if (player.Properties.Get("C").Value > 10000) {
+      if (player.Properties.Get("C").Value > 10000) {
         player.Ui.Hint.Value = "ты купил пропуск/повышение";
         player.Properties.Get("S").Value += 1;
         player.Properties.Get("C").Value -= 10000;
-    } else {
-        player.Ui.Hint.Value = "надо 10000 на пропуск/повышение, а у тебя: " + player.Properties.Get("S").Value;
+      } else {
+         player.Ui.Hint.Value = "надо 10000 на пропуск/повышение, а у тебя: " + player.Properties.Get("S").Value;
 }
 });
 
@@ -211,7 +211,6 @@ Farm.OnEnter.Add(function(player){
 player.Ui.Hint.Value = "+500";   
 player.Properties.Get("C").Value += 500;   
 Farm.OnExit.Add(function (player) {
-player.Spawns.Enable = true;
 player.Spawns.Spawn();
 });   
 
