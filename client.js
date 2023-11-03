@@ -150,7 +150,7 @@ DisplayName: "Деньги"
 },
 {
   Value: "death",
-  DisplayName: "<color=red>смерти</a>"
+  DisplayName: "смерти"
 };      
 
 var praAreaTag = "пропуск"; 
@@ -202,6 +202,7 @@ player.inventory.Build.Value = false;
 player.inventory.BuildInfinity.Value = false;
 player.inventory.Melee.value = false;
   }
+});                              
 
 var Farm = AreaPlayerTriggerService.Get("yp1");    
 Farm.Tags = ["ур1"];    
@@ -213,7 +214,6 @@ Farm.OnExit.Add(function (player) {
 player.Spawns.Enable = true;
 player.Spawns.Spawn();
 });   
-
 
 var dsTrigger = AreaPlayerTriggerService.Get("g4вsh");
 dsTrigger.Tags = ["пр2"];
