@@ -154,7 +154,7 @@ Farm.Tags = ["ур1"];
 Farm.Enable = true;   
 Farm.OnEnter.Add(function(player){  
 player.Ui.Hint.Value = "+100";  
-player.Properties.Get("C").Value += 10;  
+player.Properties.Get("C").Value += 100;  
 });  
 Farm.OnExit.Add(function(player){  
 player.Spawns.Spawn();  
@@ -174,3 +174,91 @@ PvP.Enable = true;
 PvP.OnExit.Add(function (player) {    
 player.inventory.Melee.Value = false;   
 });  
+
+var Farm = AreaPlayerTriggerService.Get("Fы213фвфы");   
+Farm.Tags = ["ур2"];   
+Farm.Enable = true;   
+Farm.OnEnter.Add(function(player){  
+player.Ui.Hint.Value = "+200";  
+player.Properties.Get("C").Value += 200;  
+});  
+Farm.OnExit.Add(function(player){  
+player.Spawns.Spawn();  
+}); 
+
+var Farm = AreaPlayerTriggerService.Get("22Fыфвфы");   
+Farm.Tags = ["ур3"];   
+Farm.Enable = true;   
+Farm.OnEnter.Add(function(player){  
+player.Ui.Hint.Value = "+250";  
+player.Properties.Get("C").Value += 250;  
+});  
+Farm.OnExit.Add(function(player){  
+player.Spawns.Spawn();  
+}); 
+
+var Farm = AreaPlayerTriggerService.Get("F534ыфвфы");   
+Farm.Tags = ["ур4"];   
+Farm.Enable = true;   
+Farm.OnEnter.Add(function(player){  
+player.Ui.Hint.Value = "+350";  
+player.Properties.Get("C").Value +=350;  
+});  
+Farm.OnExit.Add(function(player){  
+player.Spawns.Spawn();  
+}); 
+
+var Farm = AreaPlayerTriggerService.Get("Fыdsфвфы");   
+Farm.Tags = ["ур5"];   
+Farm.Enable = true;   
+Farm.OnEnter.Add(function(player){  
+player.Ui.Hint.Value = "+400";  
+player.Properties.Get("C").Value += 400;  
+});  
+Farm.OnExit.Add(function(player){  
+player.Spawns.Spawn();  
+}); 
+
+var Buy = AreaPlayerTriggerService.Get("Besk2");    
+Buy.Tags = ["бескдигл"];    
+Buy.Enable = true;    
+Buy.OnEnter.Add(function(player){   
+if(player.Properties.Get("C").Value >= 100000){   
+player.Ui.Hint.Value = "куплены бесконечные патроны на дигл";   
+player.Properties.Get("C").Value -= 100000;   
+player.inventory.SecondaryInfinity.Value = true;   
+}else{   
+player.Ui.Hint.Value = "100000 монет = бесконечные патроны на дигл";   
+}   
+});var Buy = AreaPlayerTriggerService.Get("Besk2");    
+Buy.Tags = ["бескдигл"];    
+Buy.Enable = true;    
+Buy.OnEnter.Add(function(player){   
+if(player.Properties.Get("C").Value >= 20000){   
+player.Ui.Hint.Value = "куплены бесконечные патроны на дигл";   
+player.Properties.Get("C").Value -= 20000;   
+player.inventory.SecondaryInfinity.Value = true;   
+}else{   
+player.Ui.Hint.Value = "20000 монет = бесконечные патроны на дигл";   
+}   
+});
+
+var praAreaTag = "пропуск"; 
+var ViewsParameterName = "Vivews"; 
+var praAreas = AreaService.GetByTag(praAreaTag); 
+var praView = AreaViewService.GetContext().Get("praView"); 
+praView.Color = {b:1}; 
+praView.Tags = ["praAreaTag"]; 
+praView.Enable = true; 
+var praTrigger = AreaPlayerTriggerService.Get("praTrigger"); 
+praTrigger.Tags = ["praAreaTag"]; 
+praTrigger.Enable = true; 
+praTrigger.OnEnter.Add(function (player) {     
+    if (player.Properties.Get("C").Value > 1500) {
+        player.Ui.Hint.Value = "ты купил пропуск/повышение";
+        player.Properties.Get("S").Value += 1;
+        player.Properties.Get("C").Value -= 1500;
+    } else {
+        player.Ui.Hint.Value = "надо 1500 на пропуск/повышение, а у тебя: " + player.Properties.Get("S").Value;
+}
+});
