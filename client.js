@@ -159,3 +159,22 @@ player.Properties.Get("C").Value += 10;
 Farm.OnExit.Add(function(player){  
 player.Spawns.Spawn();  
 }); 
+
+var PvP =     
+AreaPlayerTriggerService.Get("block");    
+PvP.Tags = ["block"];    
+PvP.Enable = false;    
+PvP.OnEnter.Add(function (player) {    
+player.inventory.Build.Value = true;   
+player.inventory.BuildInfinity.Value = true; 
+});   
+var PvP =     
+AreaPlayerTriggerService.Get("block");    
+PvP.Tags = ["block"];    
+PvP.Enable = true;   
+PvP.OnExit.Add(function (player) {   
+    player.Build.BuildRangeEnable.Value = true; 
+player.inventory.Build.Value = false; 
+player.inventory.BuildInfinity.Value = false;
+  }
+});  
