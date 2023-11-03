@@ -210,7 +210,7 @@ Farm.Enable = true;
 Farm.OnEnter.Add(function(player){   
 player.Ui.Hint.Value = "+500";   
 player.Properties.Get("C").Value += 500;   
-Farm.OnExit.Add(function (player) {
+Farm.OnExit.Add(function(player){
 player.Spawns.Spawn();
 });   
 
