@@ -149,7 +149,7 @@ var Farm = AreaPlayerTriggerService.Get("Fыфвфы");
 Farm.Tags = ["ур1"];   
 Farm.Enable = true;   
 Farm.OnEnter.Add(function(player){  
-player.Ui.Hint.Value = "+100";  
+player.Ui.Hint.Value = "ты прошёл 1 уровень и получил +100 денег";  
 player.Properties.Get("C").Value += 100;  
 });  
 Farm.OnExit.Add(function(player){  
