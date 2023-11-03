@@ -204,16 +204,6 @@ player.inventory.Melee.value = false;
   }
 });                              
 
-var Farm = AreaPlayerTriggerService.Get("yp1");    
-Farm.Tags = ["ур1"];    
-Farm.Enable = true;    
-Farm.OnEnter.Add(function(player){   
-player.Ui.Hint.Value = "+500";   
-player.Properties.Get("C").Value += 500;   
-Farm.OnExit.Add(function(player){
-player.Spawns.Spawn();
-});   
-
 var dsTrigger = AreaPlayerTriggerService.Get("g4вsh");
 dsTrigger.Tags = ["пр2"];
 dsTrigger.Enable = true; 
